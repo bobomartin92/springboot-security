@@ -3,6 +3,7 @@ package dev.decadev.demo.config;
 import dev.decadev.demo.model.User;
 import dev.decadev.demo.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class CustomUserDetailService implements UserDetailsService {
 
