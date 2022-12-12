@@ -1,5 +1,8 @@
 package dev.decadev.demo.config;
 
+import dev.decadev.demo.constant.ApiUriConstant;
+import dev.decadev.demo.security.AppUserDetailService;
+import dev.decadev.demo.security.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,19 +17,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static dev.decadev.demo.constant.ApiUriConstant.AUTH_WHITELIST;
+
 @RequiredArgsConstructor
 @EnableWebSecurity
 public class SecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
-    private final CustomUserDetailService userDetailService;
+    private final AppUserDetailService userDetailService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/v1/auth/**").permitAll()
+                .antMatchers(AUTH_WHITELIST).permitAll()
                 .antMatchers("/api/v1/greetings/say-goodbye").permitAll()
                 .anyRequest()
                 .authenticated()

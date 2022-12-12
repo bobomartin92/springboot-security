@@ -1,4 +1,4 @@
-package dev.decadev.demo.config;
+package dev.decadev.demo.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

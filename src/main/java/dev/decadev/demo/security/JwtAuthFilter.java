@@ -1,4 +1,4 @@
-package dev.decadev.demo.config;
+package dev.decadev.demo.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,7 +18,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
 
-    final CustomUserDetailService userDetailsService;
+    final AppUserDetailService userDetailsService;
     final JwtUtils jwtUtils;
 
     @Override
