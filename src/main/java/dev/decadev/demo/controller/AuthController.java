@@ -39,11 +39,9 @@ public class AuthController {
     @PostMapping("/signin")
     public ResponseEntity<String> authenticateUser(@RequestBody AuthRequest request){
 
-        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 request.getEmail(), request.getPassword()
         ));
-
-        SecurityContextHolder.getContext().setAuthentication(authenticate);
 
         final AppUserDetails user = (AppUserDetails) userDetailService.loadUserByUsername(request.getEmail());
 
